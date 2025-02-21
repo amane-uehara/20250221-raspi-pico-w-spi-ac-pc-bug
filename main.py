@@ -7,13 +7,13 @@ class EPD_5in65_simplified:
     self.width = 600
     self.height = 448
 
+    self.spi = SPI(1)
+    self.spi.init(baudrate=4_000_000)
+
     self.rst_pin  = Pin(12, Pin.OUT)
     self.dc_pin   = Pin(8,  Pin.OUT)
     self.cs_pin   = Pin(9,  Pin.OUT)
     self.busy_pin = Pin(13, Pin.IN, Pin.PULL_UP)
-
-    self.spi = SPI(1)
-    self.spi.init(baudrate=4_000_000)
 
   def reset(self):
     self.rst_pin.value(1)
